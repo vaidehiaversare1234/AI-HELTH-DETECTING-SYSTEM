@@ -15,6 +15,7 @@ from pathlib import Path
 from io import BytesIO
 from datetime import datetime
 import sqlite3
+import os
 
 from src.health_detector import HealthRiskPredictor
 
@@ -31,7 +32,7 @@ app = Flask(__name__)
 
 # For local college project testing.
 # Change this to a long, random secret before deployment.
-app.secret_key = "change-this-to-a-long-random-secret"
+app.secret_key = os.environ.get("SECRET_KEY", "temporary-local-key")
 
 BASE_DIR = Path(__file__).resolve().parent
 DATABASE_PATH = BASE_DIR / "database" / "health_history.db"
@@ -542,6 +543,7 @@ def download_report():
 # 12. RUN THE APPLICATION
 # --------------------------------------------------
 
+init_database()
+
 if __name__ == "__main__":
-    init_database()
-    app.run(debug=True)
+    app.run(debug=False)
