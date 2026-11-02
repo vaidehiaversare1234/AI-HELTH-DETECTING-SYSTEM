@@ -1,0 +1,156 @@
+
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Health Prediction Result</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+
+            <div class="header">
+                <h1>AI Health Detecting System</h1>
+                <p class="subtitle">Your Health Risk Prediction</p>
+            </div>
+
+            <div class="result-section">
+                <h2>Prediction Result</h2>
+
+                <p>
+                    <strong>Selected Symptoms:</strong>
+                    {% if selected_symptoms %}
+                        {{ selected_symptoms | join(', ') }}
+                    {% else %}
+                        No symptoms selected
+                    {% endif %}
+                </p>
+
+                <div class="result-box">
+                    <h3>Health Status</h3>
+                    <p class="result-value">{{ result.status }}</p>
+                </div>
+
+                <div class="result-box">
+                    <h3>Risk Level</h3>
+                    <p class="result-value">{{ result.risk_level }}</p>
+                </div>
+
+                <div class="result-box">
+                    <h3>Symptom Score</h3>
+                    <p>
+                        {{ result.score }} of 5 symptoms selected.
+                    </p>
+                </div>
+
+                <hr>
+
+                <h2>Possible Health Concerns</h2>
+                <p>
+                    This system evaluates selected symptoms to provide
+                    a preliminary risk category. It cannot identify or
+                    confirm a specific disease.
+                </p>
+
+                {% if 'Fever' in selected_symptoms %}
+                    <div class="result-box">
+                        <h3>Fever — General Information</h3>
+                        <p>
+                            Fever can occur with infections and other
+                            conditions. The cause cannot be determined
+                            from this symptom alone.
+                        </p>
+                    </div>
+                {% endif %}
+
+                {% if 'Cough' in selected_symptoms %}
+                    <div class="result-box">
+                        <h3>Cough — General Information</h3>
+                        <p>
+                            Cough may occur due to a cold, irritation,
+                            allergies or other respiratory conditions.
+                        </p>
+                    </div>
+                {% endif %}
+
+                {% if 'Fatigue' in selected_symptoms %}
+                    <div class="result-box">
+                        <h3>Fatigue — General Information</h3>
+                        <p>
+                            Fatigue can be associated with poor sleep,
+                            dehydration, stress or various medical
+                            conditions.
+                        </p>
+                    </div>
+                {% endif %}
+
+                {% if 'Shortness of Breath' in selected_symptoms %}
+                    <div class="result-box">
+                        <h3>Breathing Difficulty — Important</h3>
+                        <p>
+                            New or severe shortness of breath requires
+                            urgent medical assessment. If breathing is
+                            severe or worsening, seek emergency help.
+                        </p>
+                    </div>
+                {% endif %}
+
+                {% if 'Chest Pain' in selected_symptoms %}
+                    <div class="result-box">
+                        <h3>Chest Pain — Important</h3>
+                        <p>
+                            Chest pain can have serious causes. Seek
+                            emergency medical help for new, severe or
+                            persistent chest pain, especially with
+                            breathing difficulty, sweating or faintness.
+                        </p>
+                    </div>
+                {% endif %}
+
+                <hr>
+
+                <h2>Precautions</h2>
+                <ul>
+                    <li>Rest and avoid overexertion.</li>
+                    <li>Drink fluids regularly, unless a clinician has restricted your fluid intake.</li>
+                    <li>Monitor symptoms and whether they are getting worse.</li>
+                    <li>Contact a healthcare professional if symptoms persist or concern you.</li>
+                </ul>
+
+                <h2>General Diet Recommendations</h2>
+                <ul>
+                    <li>Drink water regularly.</li>
+                    <li>Choose balanced meals with vegetables, fruit, grains and protein.</li>
+                    <li>If your appetite is low, try small, easy-to-eat meals.</li>
+                    <li>Follow any dietary advice given by your healthcare professional.</li>
+                </ul>
+
+                <p class="notice">
+                    <strong>Medical disclaimer:</strong>
+                    This is an educational project, not a medical
+                    diagnostic tool. Its risk category may be inaccurate
+                    and must not be used to rule out illness or delay
+                    medical care.
+                </p>
+
+                <div class="result-actions">
+                    <a href="/" class="back-button">Check Again</a>
+                    <a href="/history" class="back-button">View Prediction History</a>
+                     <a href="/download-report" class="back-button">
+        Download PDF Report
+    </a>
+</div>
+</div>
+ </div>
+ </div>
+</body>
+</html>
+

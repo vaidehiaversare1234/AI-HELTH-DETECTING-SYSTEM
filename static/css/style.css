@@ -1,0 +1,349 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    min-height: 100vh;
+    color: #333;
+}
+
+
+/* Main Container */
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+
+/* Main Card */
+
+.card {
+    background: white;
+    border-radius: 15px;
+    padding: 35px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+
+/* Header */
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+.header h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+
+.subtitle {
+    font-size: 17px;
+    color: #666;
+}
+
+
+/* Result Section */
+
+.result-section {
+    margin-top: 20px;
+}
+
+
+.result-section h2 {
+    font-size: 27px;
+    margin-bottom: 20px;
+}
+
+
+.selected-symptoms {
+    font-size: 17px;
+    margin-bottom: 25px;
+}
+
+
+/* Condition Box */
+
+.condition-box {
+    background: #eef6ff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-left: 5px solid #2196f3;
+}
+
+
+.condition-box h3 {
+    margin-bottom: 10px;
+}
+
+
+.condition {
+    font-size: 21px;
+    font-weight: bold;
+}
+
+
+/* Confidence */
+
+.confidence-box {
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+
+.confidence-box h3 {
+    margin-bottom: 15px;
+}
+
+
+.progress-container {
+    width: 100%;
+    height: 25px;
+    background: #e0e0e0;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+
+.progress-bar {
+    height: 100%;
+    background: #4caf50;
+    border-radius: 20px;
+}
+
+
+.confidence-text {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+
+/* Information Boxes */
+
+.info-box {
+    background: #fafafa;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #e5e5e5;
+}
+
+
+.info-box h3 {
+    margin-bottom: 12px;
+}
+
+
+.info-box p {
+    line-height: 1.7;
+    margin-bottom: 10px;
+}
+
+
+.info-box ul {
+    padding-left: 25px;
+}
+
+
+.info-box li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+
+/* Warning */
+
+.warning-box {
+    background: #fff7e6;
+    border-left: 5px solid #ff9800;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 25px;
+}
+
+
+.warning-box p {
+    margin-top: 8px;
+    line-height: 1.6;
+}
+
+
+/* Button */
+
+.button-area {
+    text-align: center;
+    margin-top: 30px;
+}
+
+
+.back-button {
+    display: inline-block;
+    text-decoration: none;
+    background: #2196f3;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+
+.back-button:hover {
+    background: #1976d2;
+}
+
+
+/* Mobile Responsive Design */
+
+@media (max-width: 600px) {
+
+    .container {
+        margin: 15px auto;
+        padding: 10px;
+    }
+
+
+    .card {
+        padding: 20px;
+    }
+
+
+    .header h1 {
+        font-size: 25px;
+    }
+
+
+    .result-section h2 {
+        font-size: 23px;
+    }
+
+
+    .condition {
+        font-size: 18px;
+    }
+
+}
+/* Registration and Login Pages */
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    box-sizing: border-box;
+    background: linear-gradient(135deg, #e7f6ff, #f4f9ff);
+    font-family: Arial, sans-serif;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    padding: 32px;
+    box-sizing: border-box;
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 8px 30px rgba(20, 70, 100, 0.12);
+}
+
+.auth-card h1 {
+    text-align: center;
+    color: #176b87;
+    margin-bottom: 8px;
+}
+
+.auth-card > p {
+    text-align: center;
+    color: #64748b;
+    margin-bottom: 24px;
+}
+
+.auth-card label {
+    display: block;
+    margin: 14px 0 7px;
+    font-weight: bold;
+    color: #334155;
+}
+
+.auth-card input {
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.auth-card input:focus {
+    outline: 2px solid #65b8d4;
+    border-color: #176b87;
+}
+
+.auth-card button {
+    width: 100%;
+    margin-top: 22px;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    background: #176b87;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.auth-card button:hover {
+    background: #10546c;
+}
+
+.auth-card .auth-link {
+    margin-top: 22px;
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+.auth-card a {
+    color: #176b87;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.auth-card a:hover {
+    text-decoration: underline;
+}
+
+.message {
+    padding: 10px;
+    margin: 12px 0;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.message.error {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.message.success {
+    background: #dcfce7;
+    color: #166534;
+}
+
+@media (max-width: 480px) {
+    .auth-card {
+        padding: 24px 20px;
+    }
+}

@@ -1,0 +1,386 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | AI Health Detecting System</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            color: #243447;
+
+            /* Your medical PNG background */
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(4, 45, 65, 0.45),
+                    rgba(8, 127, 140, 0.25)
+                ),
+                url("/static/images/AI Health Login Interface.png")
+                center center / cover no-repeat fixed;
+        }
+
+        .login-wrapper {
+            width: 100%;
+            max-width: 950px;
+            min-height: 560px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            overflow: hidden;
+            border-radius: 22px;
+            background: white;
+            box-shadow: 0 20px 60px rgba(0, 30, 50, 0.25);
+        }
+
+        .welcome-panel {
+            background: linear-gradient(
+                145deg,
+                rgba(8, 127, 140, 0.96),
+                rgba(7, 89, 133, 0.96)
+            );
+            color: white;
+            padding: 48px 38px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 50px;
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .brand-icon {
+            width: 44px;
+            height: 44px;
+            display: grid;
+            place-items: center;
+            background: rgba(255, 255, 255, 0.16);
+            border-radius: 13px;
+            font-size: 27px;
+        }
+
+        .welcome-panel h1 {
+            font-size: 34px;
+            line-height: 1.25;
+            margin-bottom: 18px;
+        }
+
+        .welcome-panel p {
+            color: #e0f2fe;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .feature {
+            margin-top: 30px;
+            padding: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.08);
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        .form-panel {
+            padding: 48px 42px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-panel h2 {
+            font-size: 29px;
+            margin-bottom: 10px;
+            color: #17324d;
+        }
+
+        .subtitle {
+            color: #718096;
+            font-size: 14px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .field {
+            margin-bottom: 20px;
+        }
+
+        .field label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #34465a;
+        }
+
+        .field input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #d8e1e8;
+            border-radius: 10px;
+            outline: none;
+            font-size: 15px;
+            background: #fbfdff;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .field input:focus {
+            border-color: #0891b2;
+            box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.12);
+        }
+
+        .password-box {
+            position: relative;
+        }
+
+        .password-box input {
+            padding-right: 65px;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: auto;
+            padding: 6px;
+            border: none;
+            background: transparent;
+            color: #087f8c;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: #087f8c;
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            margin-top: 5px;
+        }
+
+        .login-button:hover {
+            background: #066570;
+            transform: translateY(-1px);
+        }
+
+        .message {
+            padding: 11px 12px;
+            margin-bottom: 18px;
+            border-radius: 8px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .message.error {
+            color: #9f2525;
+            background: #fff0f0;
+        }
+
+        .message.success {
+            color: #166534;
+            background: #ecfdf3;
+        }
+
+        .register-link {
+            margin-top: 24px;
+            text-align: center;
+            font-size: 14px;
+            color: #718096;
+        }
+
+        .register-link a {
+            color: #087f8c;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 11px;
+            color: #94a3b8;
+            margin-top: 30px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 14px;
+                background-attachment: scroll;
+            }
+
+            .login-wrapper {
+                grid-template-columns: 1fr;
+                max-width: 450px;
+            }
+
+            .welcome-panel {
+                padding: 25px;
+            }
+
+            .brand {
+                margin-bottom: 22px;
+            }
+
+            .welcome-panel h1 {
+                font-size: 27px;
+            }
+
+            .feature {
+                margin-top: 18px;
+            }
+
+            .form-panel {
+                padding: 32px 25px;
+            }
+
+            .form-panel h2 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="login-wrapper">
+
+        <section class="welcome-panel">
+            <div class="brand">
+                <div class="brand-icon" aria-hidden="true">✚</div>
+                <span>AI Health Detecting System</span>
+            </div>
+
+            <h1>Your health journey starts here.</h1>
+
+            <p>
+                Sign in to access your dashboard, explore your
+                health-risk assessment, and review your prediction
+                history.
+            </p>
+
+            <div class="feature">
+                <strong>Smart Health Assessment</strong>
+                <br>
+                Explore an AI-based educational health-risk
+                assessment in one convenient place.
+            </div>
+        </section>
+
+        <section class="form-panel">
+            <h2>Welcome back</h2>
+
+            <p class="subtitle">
+                Please enter your details to sign in to your account.
+            </p>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% for category, message in messages %}
+                    <div class="message {{ 'success' if category == 'success' else 'error' }}"
+                         role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endwith %}
+
+            <form method="POST" action="{{ url_for('login') }}">
+                <div class="field">
+                    <label for="email">Email address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="you@example.com"
+                        autocomplete="email"
+                        required>
+                </div>
+
+                <div class="field">
+                    <label for="password">Password</label>
+
+                    <div class="password-box">
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required>
+
+                        <button
+                            type="button"
+                            class="toggle-password"
+                            id="togglePassword"
+                            aria-controls="password"
+                            aria-pressed="false">
+                            Show
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" class="login-button">
+                    Sign In
+                </button>
+            </form>
+
+            <div class="register-link">
+                Don't have an account?
+                <a href="{{ url_for('register') }}">
+                    Create account
+                </a>
+            </div>
+
+            <p class="footer-note">
+                Educational health assessment only.<br>
+                Not a substitute for professional medical advice.
+            </p>
+        </section>
+
+    </main>
+
+    <script>
+        const passwordInput = document.getElementById("password");
+        const toggleButton = document.getElementById("togglePassword");
+
+        toggleButton.addEventListener("click", function () {
+            const showing = passwordInput.type === "text";
+
+            passwordInput.type = showing ? "password" : "text";
+            toggleButton.textContent = showing ? "Show" : "Hide";
+            toggleButton.setAttribute(
+                "aria-pressed",
+                String(!showing)
+            );
+        });
+    </script>
+</body>
+</html>

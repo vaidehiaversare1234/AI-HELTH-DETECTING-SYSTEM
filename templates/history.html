@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction History</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Prediction History</h1>
+
+            {% if history %}
+            <div style="overflow-x:auto;">
+                <table border="1" cellpadding="8">
+                    <tr>
+                        <th>ID</th>
+                        <th>Symptoms</th>
+                        <th>Health Status</th>
+                        <th>Risk Level</th>
+                        <th>Score</th>
+                        <th>Date &amp; Time</th>
+                    </tr>
+
+                    {% for item in history %}
+                    <tr>
+                        <td>{{ item[0] }}</td>
+                        <td>{{ item[1] or 'None selected' }}</td>
+                        <td>{{ item[2] }}</td>
+                        <td>{{ item[3] }}</td>
+                        <td>{{ item[4] }}</td>
+                        <td>{{ item[5] }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            {% else %}
+                <p>No prediction history found yet.</p>
+            {% endif %}
+
+            <p><a href="/">Back to Home</a></p>
+        </div>
+    </div>
+</body>
+</html>
